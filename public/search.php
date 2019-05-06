@@ -2,8 +2,8 @@
     require ('mysqli_connect.php');
     include ('header.php');
     
-    if(isset($_POST['button'])){
-        $search=$_GET['search'];
+    if(isset($_POST['search'])){
+        $search=$_POST['search'];
    
         $result = "SELECT * FROM users WHERE ('first_name' LIKE '%{$search}%') OR ('last_name' LIKE '%{$search}%')";
         $run = mysqli_query($dbc, $result);
@@ -15,7 +15,7 @@
             }
         }
         else{
-            echo "No users with".$row['first_name']." and " .$row['last_name']." exist in the database";
+            echo "No users found";
         }
     }
     mysqli_close($dbc);
